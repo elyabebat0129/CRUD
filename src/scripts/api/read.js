@@ -14,7 +14,10 @@ async function getUsers() {
                 <td>${user.name}</td>
                 <td>${user.age}</td>
                 <td>${user.email}</td>
-            </tr>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="editUser(${user.id}, '${user.name}', ${user.age}, '${user.email}')">Editar</button>
+                </td>
+                </tr>
         `;
     });
     
