@@ -1,9 +1,6 @@
-// Mostra dados na tela
-const table = document.getElementById('table');
-
-function renderUsers(users) {
+export function renderUsers(users) {
+    const table = document.getElementById('table');
     table.innerHTML = "";
-
     users.forEach(user => {
         table.innerHTML += `
             <tr>

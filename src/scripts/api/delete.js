@@ -1,5 +1,6 @@
-//Delete user pelo ID
-async function deleteUser(id) {
+import { getUsers } from './read.js';
+
+export async function deleteUser(id) {
     const response = await fetch(`http://localhost:8000/api/users?id=${id}`, {
         method: "DELETE",
     });

@@ -1,5 +1,6 @@
-//Form com infos do user
-function editUser(id, name, age, email) {
+import { getUsers } from './read.js';
+
+export function editUser(id, name, age, email) {
     document.getElementById('formEdit').style.display = 'block';
     document.getElementById('editId').value = id;
     document.getElementById('editName').value = name;
@@ -7,22 +8,14 @@ function editUser(id, name, age, email) {
     document.getElementById('editEmail').value = email;
 }
 
-
-//Função edit user
-async function updateUser() {
-    const id = document.getElementById('editId').value;
-
+export async function updateUser(id, name, age, email) {
     const response = await fetch(`http://localhost:8000/api/users?id=${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            name: document.getElementById("editName").value,
-            age: parseInt(document.getElementById("editAge").value),
-            email: document.getElementById("editEmail").value,
-        }),
+        body: JSON.stringify({ name, age: parseInt(age), email }),
     });
 
-    const updated = await response.json();
+    await response.json();
     document.getElementById('formEdit').style.display = 'none';
     getUsers();
 }

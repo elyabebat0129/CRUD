@@ -1,20 +1,12 @@
-// Função criar usuário
-async function createUser() {
+import { getUsers } from './read.js';
+
+export async function createUser(name, age, email) {
     const response = await fetch("http://localhost:8000/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            name: document.getElementById("name").value,
-            age: parseInt(document.getElementById("age").value),
-            email: document.getElementById("email").value
-        }),
+        body: JSON.stringify({ name, age: parseInt(age), email }),
     });
 
-    const created = await response.json();
-
-    document.getElementById("name").value = "";
-    document.getElementById("age").value = "";
-    document.getElementById("email").value = "";
-
+    await response.json();
     getUsers();
 }
