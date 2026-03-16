@@ -17,7 +17,7 @@ async function updateUser() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             name: document.getElementById("editName").value,
-            age: document.getElementById("editAge").value,
+            age: parseInt(document.getElementById("editAge").value),
             email: document.getElementById("editEmail").value,
         }),
     });
