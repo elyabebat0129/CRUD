@@ -4,13 +4,17 @@ Aplicação web de gerenciamento de usuários com interface em HTML/CSS/JavaScri
 
 ## Tecnologias
 
-- HTML, CSS, JavaScript
+- HTML, CSS, JavaScript (ES Modules)
 - Bootstrap 5
+- Nginx (Alpine)
+- Docker / Docker Compose
 
 ## Estrutura do Projeto
 
 ```
 crud/
+├── Dockerfile
+├── compose.yaml
 └── src/
     └── scripts/
         ├── api/
@@ -21,7 +25,8 @@ crud/
         ├── dom/
         │   └── render.js      # Renderização da tabela
         └── styles/
-            └── index.html     # Interface principal
+            ├── index.html     # Interface principal
+            └── app.js         # Entry-point dos módulos
 ```
 
 ## Funcionalidades
