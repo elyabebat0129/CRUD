@@ -1,10 +1,12 @@
+import axios from 'axios';
 import { getUsers } from './read.js';
 
 export async function deleteUser(id) {
-    const response = await fetch(`http://localhost:8000/api/users?id=${id}`, {
-        method: "DELETE",
-    });
-
-    const result = await response.json();
-    getUsers();
+    try {
+        await axios.delete(`http://localhost:8000/api/users?id=${id}`);
+        getUsers();
+    } catch (error) {
+        const message = error.response?.data?.error || 'Failed to delete user';
+        throw new Error(message);
+    }
 }

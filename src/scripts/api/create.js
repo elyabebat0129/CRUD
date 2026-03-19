@@ -1,12 +1,16 @@
+import axios from 'axios';
 import { getUsers } from './read.js';
 
 export async function createUser(name, age, email) {
-    const response = await fetch("http://localhost:8000/api/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, age: parseInt(age), email }),
-    });
-
-    await response.json();
-    getUsers();
+    try {
+        await axios.post("http://localhost:8000/api/users", {
+            name,
+            age: parseInt(age),
+            email,
+        });
+        getUsers();
+    } catch (error) {
+        const message = error.response?.data?.error || 'Failed to create user';
+        throw new Error(message);
+    }
 }
